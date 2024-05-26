@@ -31,6 +31,8 @@ function useConversionRate({
       setConversionRate(data.conversion_rate);
     } catch {
       setError("Something get wrong");
+    } finally {
+      setIsLoading(false);
     }
   }, [setIsLoading, baseCode, targetCode, setError]);
 
