@@ -1,14 +1,14 @@
-import { Col, Input, Row, Select, SelectProps } from "antd";
+import { Col, Input, Row, Select } from "antd";
 import { valueType } from "antd/es/statistic/utils";
-import { FC } from "react";
+import { ChangeEvent, FC } from "react";
 import { CURRENCY } from "./currency-constants/currency";
 
 interface CurrencyRowProps {
   inputValue: valueType;
   inputDisabled: boolean;
-  onInputChange: () => void;
-  selectValue: SelectProps;
-  onSelectChange: () => void;
+  onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  selectValue: string;
+  onSelectChange: (value: string) => void;
 }
 
 const CurrencyRow: FC<CurrencyRowProps> = ({
