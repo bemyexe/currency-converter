@@ -5,6 +5,8 @@ import "./style.css";
 import Loader from "./components/shared/loader";
 import Error from "./components/shared/error";
 import { valueType } from "antd/es/statistic/utils";
+import { Button } from "antd";
+import { SwapOutlined } from "@ant-design/icons";
 
 const DEFAULT_BASE_VALUE = 1;
 const DEFAULT_TARGET_VALUE = 0;
@@ -54,6 +56,13 @@ const CurrencyConverter = () => {
     setTargetCode(value);
   };
 
+  const switchCurrency = () => {
+    if (baseCode !== targetCode) {
+      setBaseCode(targetCode);
+      setTargetCode(baseCode);
+    }
+  };
+
   useEffect(() => {
     if (conversionRate) {
       setTargetValue((+baseValue * conversionRate).toFixed(DEFAULT_TO_FIXED));
@@ -80,6 +89,9 @@ const CurrencyConverter = () => {
           selectValue={targetCode}
           onSelectChange={onTargetCodeChange}
         />
+        <Button onClick={switchCurrency}>
+          switch <SwapOutlined /> currency
+        </Button>
       </div>
     </>
   );
